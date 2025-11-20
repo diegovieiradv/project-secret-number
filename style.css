@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Orbitron:wght@400;700;900&display=swap');
+
+:root{
+    --bg-1: #071028;
+    --bg-2: #041830;
+    --accent: #34e3ff;
+    --accent-2: #7b5cff;
+    --neon: rgba(52,227,255,0.15);
+    --glass: rgba(255,255,255,0.04);
+    --glass-strong: rgba(255,255,255,0.06);
+    --radius: 20px;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #eaf6ff;
+}
+
+html,body{
+    height: 100%;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(123,92,255,0.08), transparent 8%),
+                linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 60%, #01050a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* animated subtle gradient motion */
+@keyframes moveGradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* subtle scanlines / noise overlay */
+body::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px);
+    background-size: 100% 4px;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+/* decorative code image (keeps existing asset) */
+body::before{
+    background-image: url("img/code.png");
+    background-repeat: no-repeat;
+    background-position: right 10% top 10%;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    opacity: 0.12;
+    filter: grayscale(1) blur(2px);
+}
+
+.container{
+    width: min(1100px, 92%);
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: var(--radius);
+    border: 1px solid rgba(123,92,255,0.18);
+    box-shadow: 0 8px 40px rgba(2,6,20,0.6), 0 0 40px rgba(52,227,255,0.04) inset;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    backdrop-filter: blur(8px) saturate(1.1);
+    position: relative;
+    overflow: hidden;
+    padding: 2.5rem;
+}
+
+/* thin animated neon border */
+.container::after{
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: calc(var(--radius) - 1px);
+    padding: 1px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.container__conteudo{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.container__informacoes{
+    flex: 1 1 60%;
+    padding: 1rem 2rem;
+}
+
+.container__imagem-pessoa{
+    flex: 1 1 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container__botao{
+    border-radius: 14px;
+    background: linear-gradient(90deg, rgba(52,227,255,0.12), rgba(123,92,255,0.12));
+    padding: 14px 22px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 800;
+    border: 1px solid rgba(52,227,255,0.35);
+    color: #e9fbff;
+    box-shadow: 0 6px 30px rgba(52,227,255,0.06), 0 0 18px rgba(123,92,255,0.08);
+    transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+    cursor: pointer;
+}
+
+.container__botao:hover:not(:disabled){
+    transform: translateY(-4px) scale(1.01);
+    filter: brightness(1.05);
+    box-shadow: 0 10px 40px rgba(52,227,255,0.12), 0 0 30px rgba(123,92,255,0.12);
+}
+
+.container__texto{margin: 1rem 0;}
+
+.container__texto-azul{color: var(--accent); font-weight:700}
+
+.container__input{
+    width: 100%;
+    height: 64px;
+    border-radius: 12px;
+    background-color: var(--glass);
+    border: 1px solid rgba(255,255,255,0.04);
+    color: var(--accent);
+    padding: 1.25rem 1.5rem;
+    font-size: 20px;
+    font-weight: 700;
+    outline: none;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.35), 0 6px 24px rgba(2,6,20,0.5);
+}
+
+.container__input:focus{
+    border-color: rgba(52,227,255,0.65);
+    box-shadow: 0 0 24px rgba(52,227,255,0.12), inset 0 2px 10px rgba(0,0,0,0.45);
+}
+
+.container__botoes{display:flex; gap:1rem;}
+
+h1{
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    padding-bottom: 1rem;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #b3ffff, #8bd0ff, #b58bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 18px rgba(52,227,255,0.06);
+}
+
+p, button{font-family: 'Inter', sans-serif;}
+
+.texto__paragrafo{font-size: clamp(16px,2.2vw,32px); font-weight:400; color: #dff6ff}
+
+button:disabled{background-color: rgba(128,128,128,0.25); cursor: not-allowed;}
+
+/* small neon accent text */
+.neon-small{color:var(--accent); text-shadow: 0 0 8px rgba(52,227,255,0.18)}
+
+@media screen and (max-width: 900px){
+    .container{
+        flex-direction: column;
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .container__conteudo{flex-direction:column}
+
+    .container__imagem-pessoa{display:none}
+
+    .container__informacoes{padding: 1rem}
+
+    .container__botao{font-size: 16px}
+}
+
+@media screen and (max-width: 480px){
+    h1{font-size: 28px}
+    .texto__paragrafo{font-size:16px}
+    .container__input{height:56px; font-size:18px}
+}
