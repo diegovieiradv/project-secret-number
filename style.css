@@ -119,6 +119,7 @@ body::before{
     border-radius: 14px;
     background: linear-gradient(90deg, rgba(52,227,255,0.12), rgba(123,92,255,0.12));
     padding: 14px 22px;
+    margin: 10px;
     width: 100%;
     font-size: 20px;
     font-weight: 800;
@@ -173,7 +174,7 @@ h1{
 
 p, button{font-family: 'Inter', sans-serif;}
 
-.texto__paragrafo{font-size: clamp(16px,2.2vw,32px); font-weight:400; color: #dff6ff}
+.texto__paragrafo{font-size: clamp(16px,2.2vw,32px); font-weight:400; color: #dff6ff; text-align: center;}
 
 button:disabled{background-color: rgba(128,128,128,0.25); cursor: not-allowed;}
 
